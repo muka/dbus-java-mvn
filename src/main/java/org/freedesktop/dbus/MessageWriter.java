@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import org.freedesktop.Debug;
 import cx.ath.matthew.unix.USOutputStream;
-import cx.ath.matthew.utils.Hexdump;
+
 
 public class MessageWriter
 {
