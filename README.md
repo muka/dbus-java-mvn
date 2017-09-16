@@ -6,7 +6,7 @@ This is a port of the official DBUS library (with some [bug fixes](https://githu
 
 ## License
 
-The code is licensed under `LGPL` to match compatibility with
+The code is based on the official libraries, see licenses here
 
 -   [D-Bus Java license](./libmatthew-java.COPYING)
 -   [libmatthew-java license](./dbus-java.COPYING)
