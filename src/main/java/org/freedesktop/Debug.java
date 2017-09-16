@@ -53,11 +53,11 @@ public class Debug {
     static public void print(String level, Throwable err) {
         log.error(err.getMessage(), err);
     }
-    
+
     static public void print(Throwable err) {
         print(err);
     }
-    
+
     static public void print(Object m) {
         print(Debug.DEBUG, m);
     }
@@ -77,41 +77,28 @@ public class Debug {
 
     public static String toAscii(byte[] m, int ofs, int width) {
         // todo: slice buff
-        return toAscii(m);    
+        return toAscii(m);
     }
-    
+
     public static String toAscii(byte[] m) {
-        return new String(m);    
+        return new String(m);
     }
-    
+
     public static String format(byte[] buf) {
         return toHex(buf);
     }
-        
+
     public static String toHex(byte[] buf, int ofs, int width) {
         //todo: slice buf
         return toHex(buf);
     }
-    
-    
-    
+
     public static String toHex(byte[] ba) {
-        StringBuilder sb = new StringBuilder();
-        Formatter formatter = new Formatter(sb);
-        for (int j = 1; j < ba.length + 1; j++) {
-            if (j % 8 == 1 || j == 0) {
-                if (j != 0) {
-                    sb.append("\n");
-                }
-                formatter.format("0%d\t|\t", j / 8);
-            }
-            formatter.format("%02X", ba[j - 1]);
-            if (j % 4 == 0) {
-                sb.append(" ");
-            }
+        StringBuilder result = new StringBuilder();
+        for (byte bb : ba) {
+            result.append(String.format("%02X", bb));
         }
-        sb.append("\n");
-        return sb.toString();
+        return result.toString();
     }
 
     static public void setThrowableTraces(boolean flag) {

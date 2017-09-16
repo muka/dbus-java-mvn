@@ -7,23 +7,24 @@
    Academic Free Licence Version 2.1.
 
    Full licence texts are included in the COPYING file with this program.
-*/
+ */
 package org.freedesktop.dbus.test;
 
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusSignal;
 import org.freedesktop.dbus.exceptions.DBusException;
 
-public interface TwoPartInterface extends DBusInterface
-{
-   public TwoPartObject getNew();
-   public class TwoPartSignal extends DBusSignal
-   {
-      public final TwoPartObject o;
-      public TwoPartSignal(String path, TwoPartObject o) throws DBusException
-      {
-         super (path, o);
-         this.o = o;
-      }
-   }
+public interface TwoPartInterface extends DBusInterface {
+
+    public TwoPartObject getNew();
+
+    public class TwoPartSignal extends DBusSignal {
+
+        public final TwoPartObject o;
+
+        public TwoPartSignal(String path, TwoPartObject o) throws DBusException {
+            super(path, o);
+            this.o = o;
+        }
+    }
 }

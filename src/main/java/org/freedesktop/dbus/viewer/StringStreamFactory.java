@@ -7,7 +7,7 @@
    Academic Free Licence Version 2.1.
 
    Full licence texts are included in the COPYING file with this program.
-*/
+ */
 package org.freedesktop.dbus.viewer;
 
 import java.io.ByteArrayOutputStream;
@@ -20,28 +20,30 @@ import org.freedesktop.dbus.bin.CreateInterface.PrintStreamFactory;
 
 /**
  * A factory using a byte array input stream
- * 
- * 
+ *
+ *
  * @author pete
  * @since 10/02/2006
  */
-final class StringStreamFactory extends PrintStreamFactory
-{
-	Map<String, ByteArrayOutputStream> streamMap = new HashMap<String, ByteArrayOutputStream>();
+final class StringStreamFactory extends PrintStreamFactory {
 
-	/** {@inheritDoc} */
-	public void init(String file, String path)
-	{
+    Map<String, ByteArrayOutputStream> streamMap = new HashMap<String, ByteArrayOutputStream>();
 
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void init(String file, String path) {
 
-	/** {@inheritDoc} */
-	@SuppressWarnings("unused")
-	public PrintStream createPrintStream(final String file) throws IOException
-	{
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		streamMap.put(file, stream);
-		return new PrintStream(stream);
+    }
 
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unused")
+    public PrintStream createPrintStream(final String file) throws IOException {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        streamMap.put(file, stream);
+        return new PrintStream(stream);
+
+    }
 }

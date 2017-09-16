@@ -10,6 +10,7 @@ package org.freedesktop;
  * @author Luca Capra <luca.capra@gmail.com>
  */
 final public class Translate {
+
     public static String t(String m) {
         return m;
     }

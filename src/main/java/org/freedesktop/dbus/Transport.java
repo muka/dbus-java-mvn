@@ -854,9 +854,10 @@ public class Transport {
                     addr = new UnixSocketAddress(address.getParameter("abstract"));
                 } else if (null != address.getParameter("path")) {
                     addr = new UnixSocketAddress(new File(address.getParameter("path")));
+                } else {
+                    throw new RuntimeException("Cannot open socket");
                 }
-                else throw new RuntimeException("Cannot open socket");
-                
+
                 us = UnixSocketChannel.open(addr).socket();
             }
 //            us.setPassCred(true);

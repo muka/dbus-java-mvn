@@ -7,7 +7,7 @@
    Academic Free Licence Version 2.1.
 
    Full licence texts are included in the COPYING file with this program.
-*/
+ */
 package org.freedesktop.dbus;
 
 import java.lang.annotation.ElementType;
@@ -20,8 +20,10 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface DBusInterfaceName
-{
-   /** The replacement interface name. */
-   String value();
+public @interface DBusInterfaceName {
+
+    /**
+     * The replacement interface name.
+     */
+    String value();
 }

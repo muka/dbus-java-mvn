@@ -7,7 +7,7 @@
    Academic Free Licence Version 2.1.
 
    Full licence texts are included in the COPYING file with this program.
-*/
+ */
 package org.freedesktop.dbus.viewer;
 
 import java.util.Iterator;
@@ -16,47 +16,49 @@ import java.util.NoSuchElementException;
 import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")
-class SaveAllAction extends TabbedSaveAction
-{
+class SaveAllAction extends TabbedSaveAction {
 
-	private class TabIterator implements Iterator<TextFile>
-	{
-		private int i = 0;
-		/** {@inheritDoc} */
-		public boolean hasNext()
-		{
-			return i < tabbedPane.getTabCount();
-		}
+    private class TabIterator implements Iterator<TextFile> {
 
-		/** {@inheritDoc} */
-		public TextFile next()
-		{
-			if (hasNext())
-			{
-				int currentIndex = i;
-				i++;
-				return getTextFile(currentIndex);
-			}
-			throw new NoSuchElementException();
-		}
+        private int i = 0;
 
-		/** {@inheritDoc} */
-		public void remove()
-		{
-			throw new UnsupportedOperationException();
-		}
+        /**
+         * {@inheritDoc}
+         */
+        public boolean hasNext() {
+            return i < tabbedPane.getTabCount();
+        }
 
-	}
+        /**
+         * {@inheritDoc}
+         */
+        public TextFile next() {
+            if (hasNext()) {
+                int currentIndex = i;
+                i++;
+                return getTextFile(currentIndex);
+            }
+            throw new NoSuchElementException();
+        }
 
-	protected SaveAllAction(JTabbedPane tabbedPane)
-	{
-		super(tabbedPane, "Save All...");
-	}
+        /**
+         * {@inheritDoc}
+         */
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
-	/** {@inheritDoc} */
-	public Iterator<TextFile> iterator()
-	{
-		return new TabIterator();
-	}
-	
+    }
+
+    protected SaveAllAction(JTabbedPane tabbedPane) {
+        super(tabbedPane, "Save All...");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Iterator<TextFile> iterator() {
+        return new TabIterator();
+    }
+
 }

@@ -7,7 +7,7 @@
    Academic Free Licence Version 2.1.
 
    Full licence texts are included in the COPYING file with this program.
-*/
+ */
 package org.freedesktop.dbus.test;
 
 import org.freedesktop.dbus.DBusInterface;
@@ -16,11 +16,11 @@ import org.freedesktop.DBus.Description;
 /**
  * A sample remote interface which exports one method.
  */
-public interface TestNewInterface extends DBusInterface
-{
-   /**
-    * A simple method with no parameters which returns a String
-    */
-   @Description("Simple test method")
-   public String getName();
+public interface TestNewInterface extends DBusInterface {
+
+    /**
+     * A simple method with no parameters which returns a String
+     */
+    @Description("Simple test method")
+    public String getName();
 }

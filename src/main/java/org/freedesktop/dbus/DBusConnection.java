@@ -246,6 +246,7 @@ public class DBusConnection extends AbstractConnection {
      * a reference to it is returned.
      *
      * @param bustype The Bus to connect to.
+     * @return
      * @see #SYSTEM
      * @see #SESSION
      * @throws DBusException If there is a problem connecting to the Bus.
