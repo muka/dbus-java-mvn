@@ -52,5 +52,6 @@ public class test_low_level {
         m = conn.min.readMessage();
         Debug.print(m);
         conn.disconnect();
+        Debug.print("DONE.");
     }
 }

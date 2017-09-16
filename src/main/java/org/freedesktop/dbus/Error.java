@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.lang.reflect.Constructor;
 import java.util.Vector;

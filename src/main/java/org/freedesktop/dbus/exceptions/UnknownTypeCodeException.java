@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus.exceptions;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 @SuppressWarnings("serial")
 public class UnknownTypeCodeException extends DBusException implements NonFatalException {

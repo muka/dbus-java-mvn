@@ -55,7 +55,7 @@ public class Debug {
     }
 
     static public void print(Throwable err) {
-        print(err);
+        print(Debug.ERR, err.getMessage());
     }
 
     static public void print(Object m) {
@@ -63,7 +63,7 @@ public class Debug {
     }
 
     static public void print(String level, byte[] msg) {
-        print(level, toHex(msg));
+        print(level, Hexdump.toHex(msg));
     }
 
     static public void print(String msg) {
@@ -75,30 +75,8 @@ public class Debug {
         print(Debug.DEBUG, c.getCanonicalName());
     }
 
-    public static String toAscii(byte[] m, int ofs, int width) {
-        // todo: slice buff
-        return toAscii(m);
-    }
-
-    public static String toAscii(byte[] m) {
-        return new String(m);
-    }
-
     public static String format(byte[] buf) {
-        return toHex(buf);
-    }
-
-    public static String toHex(byte[] buf, int ofs, int width) {
-        //todo: slice buf
-        return toHex(buf);
-    }
-
-    public static String toHex(byte[] ba) {
-        StringBuilder result = new StringBuilder();
-        for (byte bb : ba) {
-            result.append(String.format("%02X", bb));
-        }
-        return result.toString();
+        return Hexdump.toHex(buf);
     }
 
     static public void setThrowableTraces(boolean flag) {

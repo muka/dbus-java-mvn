@@ -11,7 +11,7 @@
 package org.freedesktop.dbus.bin;
 
 import java.io.File;
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.AbstractConnection;

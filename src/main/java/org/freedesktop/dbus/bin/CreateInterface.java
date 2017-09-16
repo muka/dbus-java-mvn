@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus.bin;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 import static org.freedesktop.dbus.bin.IdentifierMangler.mangle;
 
 import java.io.File;

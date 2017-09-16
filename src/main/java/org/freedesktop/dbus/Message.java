@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import org.freedesktop.Debug;
+import org.freedesktop.Hexdump;
 
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.MarshallingException;
@@ -432,7 +433,7 @@ public class Message {
             marshallintLittle(l, buf, ofs, width);
         }
         if (Debug.debug) {
-            Debug.print(Debug.VERBOSE, "Marshalled int " + l + " to " + Debug.toHex(buf, ofs, width));
+            Debug.print(Debug.VERBOSE, "Marshalled int " + l + " to " + Hexdump.toHex(buf, ofs, width));
         }
     }
 
@@ -1137,7 +1138,7 @@ public class Message {
             case ArgumentType.DICT_ENTRY1:
                 Object[] decontents = new Object[2];
                 if (Debug.debug) {
-                    Debug.print(Debug.VERBOSE, "Extracting Dict Entry (" + Debug.toAscii(sigb, ofs[0], sigb.length - ofs[0]) + ") from: " + Debug.toHex(buf, ofs[1], buf.length - ofs[1]));
+                    Debug.print(Debug.VERBOSE, "Extracting Dict Entry (" + Hexdump.toAscii(sigb, ofs[0], sigb.length - ofs[0]) + ") from: " + Hexdump.toHex(buf, ofs[1], buf.length - ofs[1]));
                 }
                 ofs[0]++;
                 decontents[0] = extractone(sigb, buf, ofs, true);

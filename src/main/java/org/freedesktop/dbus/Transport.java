@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,6 +39,7 @@ import jnr.unixsocket.UnixSocketAddress;
 import jnr.unixsocket.UnixSocketChannel;
 
 import org.freedesktop.Debug;
+import org.freedesktop.Hexdump;
 
 public class Transport {
 
@@ -221,11 +222,11 @@ public class Transport {
          * again. No, I don't know why either.
          */
         private String stupidlyEncode(String data) {
-            return Debug.toHex(data.getBytes()).replaceAll(" ", "");
+            return Hexdump.toHex(data.getBytes()).replaceAll(" ", "");
         }
 
         private String stupidlyEncode(byte[] data) {
-            return Debug.toHex(data).replaceAll(" ", "");
+            return Hexdump.toHex(data).replaceAll(" ", "");
         }
 
         private byte getNibble(char c) {
@@ -799,7 +800,7 @@ public class Transport {
         Random r = new Random();
         byte[] buf = new byte[16];
         r.nextBytes(buf);
-        String guid = Debug.toHex(buf);
+        String guid = Hexdump.toHex(buf);
         return guid.replaceAll(" ", "");
     }
 
@@ -861,7 +862,10 @@ public class Transport {
 
                 us = UnixSocketChannel.open(addr).socket();
             }
-//            us.setPassCred(true);
+
+            //@TODO: fix se for OS_CRED
+//            us.getChannel().setOption(UnixSocketOptions.SO_PEERCRED, us.getCredentials());
+
             in = us.getInputStream();
             out = us.getOutputStream();
         } else if ("tcp".equals(address.getType())) {
@@ -891,6 +895,7 @@ public class Transport {
                 Debug.print(Debug.VERBOSE, "Setting timeout to " + timeout + " on Socket");
             }
             if (timeout == 1) {
+                //@TODO fix this
 //                us.setBlocking(false);
             } else {
                 us.setSoTimeout(timeout);

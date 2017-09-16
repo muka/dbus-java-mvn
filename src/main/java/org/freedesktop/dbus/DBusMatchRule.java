@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.DBusExecutionException;

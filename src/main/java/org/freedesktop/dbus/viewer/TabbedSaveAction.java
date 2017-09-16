@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus.viewer;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.awt.event.ActionEvent;
 import java.io.File;

@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus.viewer;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;

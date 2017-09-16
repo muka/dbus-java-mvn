@@ -10,7 +10,7 @@
  */
 package org.freedesktop.dbus;
 
-import static org.freedesktop.Translate.t;
+import static org.freedesktop.GetText.t;
 
 import java.lang.reflect.Proxy;
 
@@ -437,7 +437,7 @@ public class DBusConnection extends AbstractConnection {
                 }
             }
 
-            if (ifcs.size() == 0) {
+            if (ifcs.isEmpty()) {
                 throw new DBusException(t("Could not find an interface to cast to"));
             }
 

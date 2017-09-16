@@ -12,6 +12,7 @@ package org.freedesktop.dbus.bin;
 
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
+import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.DBusExecutionException;
 
 /**
@@ -65,6 +66,7 @@ public class ListDBus {
         }
 
         DBusConnection conn = DBusConnection.getConnection(connection);
+
         DBus dbus = conn.getRemoteObject("org.freedesktop.DBus", "/org/freedesktop/DBus", DBus.class);
         String[] names = dbus.ListNames();
         for (String s : names) {
@@ -85,5 +87,6 @@ public class ListDBus {
             System.out.println();
         }
         conn.disconnect();
+
     }
 }

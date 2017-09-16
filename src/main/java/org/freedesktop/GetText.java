@@ -9,7 +9,7 @@ package org.freedesktop;
  *
  * @author Luca Capra <luca.capra@gmail.com>
  */
-final public class Translate {
+final public class GetText {
 
     public static String t(String m) {
         return m;
