@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.IOException;
 
 import org.freedesktop.Debug;
+import org.freedesktop.Hexdump;
 import org.freedesktop.USOutputStream;
 
 public class MessageWriter {
@@ -53,14 +54,14 @@ public class MessageWriter {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "Writing all " + m.getWireData().length + " buffers simultaneously to Unix Socket");
                 for (byte[] buf : m.getWireData()) {
-                    Debug.print(Debug.VERBOSE, "(" + buf + "):" + (null == buf ? "" : Debug.format(buf)));
+                    Debug.print(Debug.VERBOSE, "(" + buf + "):" + (null == buf ? "" : Hexdump.format(buf)));
                 }
             }
             ((USOutputStream) out).write(m.getWireData());
         } else {
             for (byte[] buf : m.getWireData()) {
                 if (Debug.debug) {
-                    Debug.print(Debug.VERBOSE, "(" + buf + "):" + (null == buf ? "" : Debug.format(buf)));
+                    Debug.print(Debug.VERBOSE, "(" + buf + "):" + (null == buf ? "" : Hexdump.format(buf)));
                 }
                 if (null == buf) {
                     break;

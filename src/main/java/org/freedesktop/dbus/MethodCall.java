@@ -16,6 +16,7 @@ import java.util.Vector;
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.MessageFormatException;
 import org.freedesktop.Debug;
+import org.freedesktop.Hexdump;
 
 public class MethodCall extends Message {
 
@@ -79,7 +80,7 @@ public class MethodCall extends Message {
         }
         marshallint(bytecounter - c, blen, 0, 4);
         if (Debug.debug) {
-            Debug.print("marshalled size (" + blen + "): " + Debug.format(blen));
+            Debug.print("marshalled size (" + blen + "): " + Hexdump.format(blen));
         }
     }
     private static long REPLY_WAIT_TIMEOUT = 20000;

@@ -416,7 +416,7 @@ public class Transport {
                     String response = serverchallenge + ":" + clientchallenge + ":" + cookie;
                     buf = md.digest(response.getBytes());
                     if (Debug.debug) {
-                        Debug.print(Debug.VERBOSE, "Response: " + response + " hash: " + Debug.format(buf));
+                        Debug.print(Debug.VERBOSE, "Response: " + response + " hash: " + Hexdump.format(buf));
                     }
                     response = stupidlyEncode(buf);
                     c.setResponse(stupidlyEncode(clientchallenge + " " + response));

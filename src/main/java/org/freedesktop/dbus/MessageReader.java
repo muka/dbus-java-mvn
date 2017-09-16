@@ -20,6 +20,7 @@ import java.net.SocketTimeoutException;
 import java.text.MessageFormat;
 
 import org.freedesktop.Debug;
+import org.freedesktop.Hexdump;
 
 import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.MessageTypeException;
@@ -178,10 +179,10 @@ public class MessageReader {
                 throw new MessageTypeException(MessageFormat.format(t("Message type {0} unsupported"), new Object[]{type}));
         }
         if (Debug.debug) {
-            Debug.print(Debug.VERBOSE, Debug.format(buf));
-            Debug.print(Debug.VERBOSE, Debug.format(tbuf));
-            Debug.print(Debug.VERBOSE, Debug.format(header));
-            Debug.print(Debug.VERBOSE, Debug.format(body));
+            Debug.print(Debug.VERBOSE, Hexdump.format(buf));
+            Debug.print(Debug.VERBOSE, Hexdump.format(tbuf));
+            Debug.print(Debug.VERBOSE, Hexdump.format(header));
+            Debug.print(Debug.VERBOSE, Hexdump.format(body));
         }
         try {
             m.populate(buf, header, body);
