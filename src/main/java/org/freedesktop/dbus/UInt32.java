@@ -59,6 +59,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a byte.
      */
+    @Override
     public byte byteValue() {
         return (byte) value;
     }
@@ -66,6 +67,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a double.
      */
+    @Override
     public double doubleValue() {
         return (double) value;
     }
@@ -73,6 +75,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a float.
      */
+    @Override
     public float floatValue() {
         return (float) value;
     }
@@ -80,6 +83,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a int.
      */
+    @Override
     public int intValue() {
         return (int) value;
     }
@@ -87,6 +91,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a long.
      */
+    @Override
     public long longValue() {
         return /*(long)*/ value;
     }
@@ -94,6 +99,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a short.
      */
+    @Override
     public short shortValue() {
         return (short) value;
     }
@@ -101,10 +107,12 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * Test two UInt32s for equality.
      */
+    @Override
     public boolean equals(Object o) {
         return o instanceof UInt32 && ((UInt32) o).value == this.value;
     }
 
+    @Override
     public int hashCode() {
         return (int) value;
     }
@@ -114,6 +122,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
      *
      * @return 0 if equal, -ve or +ve if they are different.
      */
+    @Override
     public int compareTo(UInt32 other) {
         return (int) (this.value - other.value);
     }
@@ -121,6 +130,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
     /**
      * The value of this as a string
      */
+    @Override
     public String toString() {
         return "" + value;
     }

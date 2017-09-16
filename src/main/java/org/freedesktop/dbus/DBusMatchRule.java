@@ -130,6 +130,7 @@ public class DBusMatchRule {
         }
     }
 
+    @Override
     public String toString() {
         String s = null;
         if (null != type) {

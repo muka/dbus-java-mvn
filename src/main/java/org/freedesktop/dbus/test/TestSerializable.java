@@ -37,6 +37,7 @@ public class TestSerializable<A> implements DBusSerializable {
         this.c = new Vector<Integer>(c);
     }
 
+    @Override
     public Object[] serialize() throws DBusException {
         return new Object[]{a, b, c};
     }
@@ -53,6 +54,7 @@ public class TestSerializable<A> implements DBusSerializable {
         return c;
     }
 
+    @Override
     public String toString() {
         return "TestSerializable{" + a + "," + b + "," + c + "}";
     }

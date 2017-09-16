@@ -16,10 +16,12 @@ public class two_part_test_client {
 
     public static class two_part_test_object implements TwoPartObject {
 
+        @Override
         public boolean isRemote() {
             return false;
         }
 
+        @Override
         public String getName() {
             System.out.println("client name");
             return toString();

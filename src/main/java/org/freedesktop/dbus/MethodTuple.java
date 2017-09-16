@@ -29,12 +29,14 @@ class MethodTuple {
         }
     }
 
+    @Override
     public boolean equals(Object o) {
         return o.getClass().equals(MethodTuple.class)
                 && ((MethodTuple) o).name.equals(this.name)
                 && ((MethodTuple) o).sig.equals(this.sig);
     }
 
+    @Override
     public int hashCode() {
         return name.hashCode() + sig.hashCode();
     }

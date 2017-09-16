@@ -55,6 +55,7 @@ public class BusAddress {
         return parameters.get(key);
     }
 
+    @Override
     public String toString() {
         return type + ": " + parameters;
     }

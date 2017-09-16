@@ -70,6 +70,7 @@ public class DBusConnection extends AbstractConnection {
             }
         }
 
+        @Override
         public void handle(DBus.NameOwnerChanged noc) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "Received NameOwnerChanged(" + noc.name + "," + noc.old_owner + "," + noc.new_owner + ")");
@@ -79,6 +80,7 @@ public class DBusConnection extends AbstractConnection {
             }
         }
 
+        @Override
         public boolean add(String address) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "Adding " + address);
@@ -88,26 +90,31 @@ public class DBusConnection extends AbstractConnection {
             }
         }
 
+        @Override
         public boolean addAll(Collection<? extends String> addresses) {
             synchronized (this.addresses) {
                 return this.addresses.addAll(addresses);
             }
         }
 
+        @Override
         public void clear() {
             synchronized (addresses) {
                 addresses.clear();
             }
         }
 
+        @Override
         public boolean contains(Object o) {
             return addresses.contains(o);
         }
 
+        @Override
         public boolean containsAll(Collection<?> os) {
             return addresses.containsAll(os);
         }
 
+        @Override
         public boolean equals(Object o) {
             if (o instanceof PeerSet) {
                 return ((PeerSet) o).addresses.equals(addresses);
@@ -116,18 +123,22 @@ public class DBusConnection extends AbstractConnection {
             }
         }
 
+        @Override
         public int hashCode() {
             return addresses.hashCode();
         }
 
+        @Override
         public boolean isEmpty() {
             return addresses.isEmpty();
         }
 
+        @Override
         public Iterator<String> iterator() {
             return addresses.iterator();
         }
 
+        @Override
         public boolean remove(Object o) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "Removing " + o);
@@ -137,28 +148,33 @@ public class DBusConnection extends AbstractConnection {
             }
         }
 
+        @Override
         public boolean removeAll(Collection<?> os) {
             synchronized (addresses) {
                 return addresses.removeAll(os);
             }
         }
 
+        @Override
         public boolean retainAll(Collection<?> os) {
             synchronized (addresses) {
                 return addresses.retainAll(os);
             }
         }
 
+        @Override
         public int size() {
             return addresses.size();
         }
 
+        @Override
         public Object[] toArray() {
             synchronized (addresses) {
                 return addresses.toArray();
             }
         }
 
+        @Override
         public <T> T[] toArray(T[] a) {
             synchronized (addresses) {
                 return addresses.toArray(a);
@@ -168,6 +184,7 @@ public class DBusConnection extends AbstractConnection {
 
     private class _sighandler implements DBusSigHandler<DBusSignal> {
 
+        @Override
         public void handle(DBusSignal s) {
             if (s instanceof org.freedesktop.DBus.Local.Disconnected) {
                 if (Debug.debug) {
@@ -438,6 +455,7 @@ public class DBusConnection extends AbstractConnection {
         }
     }
 
+    @Override
     DBusInterface getExportedObject(String source, String path) throws DBusException {
         ExportedObject o = null;
         synchronized (exportedObjects) {
@@ -796,6 +814,7 @@ public class DBusConnection extends AbstractConnection {
         removeSigHandler(new DBusMatchRule(type, source, objectpath), handler);
     }
 
+    @Override
     protected <T extends DBusSignal> void removeSigHandler(DBusMatchRule rule, DBusSigHandler<T> handler) throws DBusException {
 
         SignalTuple key = new SignalTuple(rule.getInterface(), rule.getMember(), rule.getObject(), rule.getSource());
@@ -877,6 +896,7 @@ public class DBusConnection extends AbstractConnection {
         addSigHandler(new DBusMatchRule(type, source, objectpath), (DBusSigHandler<? extends DBusSignal>) handler);
     }
 
+    @Override
     protected <T extends DBusSignal> void addSigHandler(DBusMatchRule rule, DBusSigHandler<T> handler) throws DBusException {
         try {
             _dbus.AddMatch(rule.toString());
@@ -903,6 +923,7 @@ public class DBusConnection extends AbstractConnection {
      * Disconnect from the Bus. This only disconnects when the last reference to
      * the bus has disconnect called on it or has been destroyed.
      */
+    @Override
     public void disconnect() {
         synchronized (conn) {
             synchronized (_reflock) {

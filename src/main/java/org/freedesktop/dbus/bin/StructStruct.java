@@ -39,10 +39,12 @@ class StructStruct {
         this.pack = pack;
     }
 
+    @Override
     public int hashCode() {
         return name.hashCode();
     }
 
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof StructStruct)) {
             return false;
@@ -53,6 +55,7 @@ class StructStruct {
         return true;
     }
 
+    @Override
     public String toString() {
         return "<" + name + ", " + pack + ">";
     }

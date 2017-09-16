@@ -114,6 +114,7 @@ public class DBusAsyncReply<ReturnType> {
         }
     }
 
+    @Override
     public String toString() {
         return t("Waiting for: ") + mc;
     }

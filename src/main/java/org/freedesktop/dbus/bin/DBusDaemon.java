@@ -81,6 +81,7 @@ public class DBusDaemon extends Thread {
             mout = new MessageWriter(sock.getOutputStream());
         }
 
+        @Override
         public String toString() {
             return null == unique ? ":?-?" : unique;
         }
@@ -151,10 +152,12 @@ public class DBusDaemon extends Thread {
         public Connstruct c;
         public Message m;
 
+        @Override
         public boolean isRemote() {
             return false;
         }
 
+        @Override
         public String Hello() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -190,6 +193,7 @@ public class DBusDaemon extends Thread {
             return c.unique;
         }
 
+        @Override
         public String[] ListNames() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -205,6 +209,7 @@ public class DBusDaemon extends Thread {
             return ns;
         }
 
+        @Override
         public boolean NameHasOwner(String name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -219,6 +224,7 @@ public class DBusDaemon extends Thread {
             return rv;
         }
 
+        @Override
         public String GetNameOwner(String name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -236,6 +242,7 @@ public class DBusDaemon extends Thread {
             return o;
         }
 
+        @Override
         public UInt32 GetConnectionUnixUser(String connection_name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -246,6 +253,7 @@ public class DBusDaemon extends Thread {
             return new UInt32(0);
         }
 
+        @Override
         public UInt32 StartServiceByName(String name, UInt32 flags) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -256,6 +264,7 @@ public class DBusDaemon extends Thread {
             return new UInt32(0);
         }
 
+        @Override
         public UInt32 RequestName(String name, UInt32 flags) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -292,6 +301,7 @@ public class DBusDaemon extends Thread {
             return new UInt32(rv);
         }
 
+        @Override
         public UInt32 ReleaseName(String name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -328,6 +338,7 @@ public class DBusDaemon extends Thread {
             return new UInt32(rv);
         }
 
+        @Override
         public void AddMatch(String matchrule) throws Error.MatchRuleInvalid {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -346,6 +357,7 @@ public class DBusDaemon extends Thread {
             return;
         }
 
+        @Override
         public void RemoveMatch(String matchrule) throws Error.MatchRuleInvalid {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -359,6 +371,7 @@ public class DBusDaemon extends Thread {
             return;
         }
 
+        @Override
         public String[] ListQueuedOwners(String name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -369,6 +382,7 @@ public class DBusDaemon extends Thread {
             return new String[0];
         }
 
+        @Override
         public UInt32 GetConnectionUnixProcessID(String connection_name) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -379,6 +393,7 @@ public class DBusDaemon extends Thread {
             return new UInt32(0);
         }
 
+        @Override
         public Byte[] GetConnectionSELinuxSecurityContext(String a) {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -389,6 +404,7 @@ public class DBusDaemon extends Thread {
             return new Byte[0];
         }
 
+        @Override
         public void ReloadConfig() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -461,6 +477,7 @@ public class DBusDaemon extends Thread {
             }
         }
 
+        @Override
         public String Introspect() {
             return "<!DOCTYPE node PUBLIC \"-//freedesktop//DTD D-BUS Object Introspection 1.0//EN\"\n"
                     + "\"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd\">\n"
@@ -541,9 +558,11 @@ public class DBusDaemon extends Thread {
                     + "</node>";
         }
 
+        @Override
         public void Ping() {
         }
 
+        @Override
         public void run() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -594,6 +613,7 @@ public class DBusDaemon extends Thread {
             setName("Sender");
         }
 
+        @Override
         public void run() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -663,6 +683,7 @@ public class DBusDaemon extends Thread {
             _lrun = false;
         }
 
+        @Override
         public void run() {
             if (Debug.debug) {
                 Debug.print(Debug.DEBUG, "enter");
@@ -781,6 +802,7 @@ public class DBusDaemon extends Thread {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public void run() {
         if (Debug.debug) {
             Debug.print(Debug.DEBUG, "enter");

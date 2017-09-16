@@ -139,6 +139,7 @@ public class Variant<T> {
     /**
      * Format the Variant as a string.
      */
+    @Override
     public String toString() {
         return "[" + o + "]";
     }
@@ -147,6 +148,7 @@ public class Variant<T> {
      * Compare this Variant with another by comparing contents
      */
     @SuppressWarnings("unchecked")
+    @Override
     public boolean equals(Object other) {
         if (null == other) {
             return false;

@@ -50,6 +50,7 @@ final class IntrospectAction extends AbstractAction implements ListSelectionList
     /**
      * {@inheritDoc}
      */
+    @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
             DBusTableModel model = (DBusTableModel) table.getModel();
@@ -65,6 +66,7 @@ final class IntrospectAction extends AbstractAction implements ListSelectionList
     /**
      * {@inheritDoc}
      */
+    @Override
     public void actionPerformed(ActionEvent e) {
 
         int row = table.getSelectedRow();
@@ -74,6 +76,7 @@ final class IntrospectAction extends AbstractAction implements ListSelectionList
             final String xmlFile = entry.getName() + ".xml";
             final Introspectable introspectable = entry.getIntrospectable();
             new Thread(new Runnable() {
+                @Override
                 public void run() {
 
                     StringStreamFactory factory = new StringStreamFactory();
@@ -105,6 +108,7 @@ final class IntrospectAction extends AbstractAction implements ListSelectionList
 
                         SwingUtilities.invokeLater(new Runnable() {
                             @SuppressWarnings("synthetic-access")
+                            @Override
                             public void run() {
                                 JOptionPane.showMessageDialog(table, introspectionPanel, "Introspection", JOptionPane.PLAIN_MESSAGE);
                             }
@@ -114,6 +118,7 @@ final class IntrospectAction extends AbstractAction implements ListSelectionList
                         e.printStackTrace();
                         SwingUtilities.invokeLater(new Runnable() {
                             @SuppressWarnings("synthetic-access")
+                            @Override
                             public void run() {
                                 JOptionPane.showMessageDialog(table, e.getMessage(), "Introspection Failed", JOptionPane.ERROR_MESSAGE);
                             }

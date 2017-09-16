@@ -185,6 +185,7 @@ class RemoteInvocationHandler implements InvocationHandler {
         this.conn = conn;
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if (method.getName().equals("isRemote")) {
             return true;

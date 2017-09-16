@@ -25,16 +25,19 @@ class NodeListIterator implements Iterator<Node> {
         i = 0;
     }
 
+    @Override
     public boolean hasNext() {
         return i < nl.getLength();
     }
 
+    @Override
     public Node next() {
         Node n = nl.item(i);
         i++;
         return n;
     }
 
+    @Override
     public void remove() {
     }
 ;

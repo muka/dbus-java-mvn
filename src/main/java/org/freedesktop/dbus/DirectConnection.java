@@ -256,6 +256,7 @@ public class DirectConnection extends AbstractConnection {
         return i;
     }
 
+    @Override
     protected <T extends DBusSignal> void removeSigHandler(DBusMatchRule rule, DBusSigHandler<T> handler) throws DBusException {
         SignalTuple key = new SignalTuple(rule.getInterface(), rule.getMember(), rule.getObject(), rule.getSource());
         synchronized (handledSignals) {
@@ -269,6 +270,7 @@ public class DirectConnection extends AbstractConnection {
         }
     }
 
+    @Override
     protected <T extends DBusSignal> void addSigHandler(DBusMatchRule rule, DBusSigHandler<T> handler) throws DBusException {
         SignalTuple key = new SignalTuple(rule.getInterface(), rule.getMember(), rule.getObject(), rule.getSource());
         synchronized (handledSignals) {
@@ -283,6 +285,7 @@ public class DirectConnection extends AbstractConnection {
         }
     }
 
+    @Override
     DBusInterface getExportedObject(String source, String path) throws DBusException {
         return getExportedObject(path);
     }

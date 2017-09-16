@@ -60,10 +60,12 @@ public class cross_test_client implements DBus.Binding.TestClient, DBusSigHandle
         this.conn = conn;
     }
 
+    @Override
     public boolean isRemote() {
         return false;
     }
 
+    @Override
     public void handle(DBus.Binding.TestSignals.Triggered t) {
         failed.remove("org.freedesktop.DBus.Binding.TestSignals.Triggered");
         if (new UInt64(21389479283L).equals(t.a) && "/Test".equals(t.getPath())) {
@@ -75,6 +77,7 @@ public class cross_test_client implements DBus.Binding.TestClient, DBusSigHandle
         }
     }
 
+    @Override
     public void Response(UInt16 a, double b) {
         failed.remove("org.freedesktop.DBus.Binding.TestClient.Response");
         if (a.equals(new UInt16(15)) && (b == 12.5)) {

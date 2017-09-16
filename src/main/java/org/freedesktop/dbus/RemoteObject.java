@@ -24,6 +24,7 @@ class RemoteObject {
         this.autostart = autostart;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof RemoteObject)) {
             return false;
@@ -57,6 +58,7 @@ class RemoteObject {
         return true;
     }
 
+    @Override
     public int hashCode() {
         return (null == busname ? 0 : busname.hashCode()) + objectpath.hashCode()
                 + (null == iface ? 0 : iface.hashCode());
@@ -78,6 +80,7 @@ class RemoteObject {
         return iface;
     }
 
+    @Override
     public String toString() {
         return busname + ":" + objectpath + ":" + iface;
     }

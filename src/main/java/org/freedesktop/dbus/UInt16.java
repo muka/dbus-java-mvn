@@ -59,6 +59,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a byte.
      */
+    @Override
     public byte byteValue() {
         return (byte) value;
     }
@@ -66,6 +67,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a double.
      */
+    @Override
     public double doubleValue() {
         return (double) value;
     }
@@ -73,6 +75,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a float.
      */
+    @Override
     public float floatValue() {
         return (float) value;
     }
@@ -80,6 +83,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a int.
      */
+    @Override
     public int intValue() {
         return /*(int)*/ value;
     }
@@ -87,6 +91,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a long.
      */
+    @Override
     public long longValue() {
         return (long) value;
     }
@@ -94,6 +99,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a short.
      */
+    @Override
     public short shortValue() {
         return (short) value;
     }
@@ -101,10 +107,12 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * Test two UInt16s for equality.
      */
+    @Override
     public boolean equals(Object o) {
         return o instanceof UInt16 && ((UInt16) o).value == this.value;
     }
 
+    @Override
     public int hashCode() {
         return /*(int)*/ value;
     }
@@ -114,6 +122,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
      *
      * @return 0 if equal, -ve or +ve if they are different.
      */
+    @Override
     public int compareTo(UInt16 other) {
         return /*(int)*/ (this.value - other.value);
     }
@@ -121,6 +130,7 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     /**
      * The value of this as a string.
      */
+    @Override
     public String toString() {
         return "" + value;
     }

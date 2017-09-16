@@ -25,6 +25,7 @@ class SaveAllAction extends TabbedSaveAction {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean hasNext() {
             return i < tabbedPane.getTabCount();
         }
@@ -32,6 +33,7 @@ class SaveAllAction extends TabbedSaveAction {
         /**
          * {@inheritDoc}
          */
+        @Override
         public TextFile next() {
             if (hasNext()) {
                 int currentIndex = i;
@@ -44,6 +46,7 @@ class SaveAllAction extends TabbedSaveAction {
         /**
          * {@inheritDoc}
          */
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -57,6 +60,7 @@ class SaveAllAction extends TabbedSaveAction {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Iterator<TextFile> iterator() {
         return new TabIterator();
     }

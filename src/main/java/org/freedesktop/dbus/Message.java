@@ -475,6 +475,7 @@ public class Message {
     /**
      * Formats the message in a human-readable format.
      */
+    @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append(getClass().getSimpleName());

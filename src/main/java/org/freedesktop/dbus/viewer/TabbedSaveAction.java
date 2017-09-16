@@ -71,6 +71,7 @@ abstract class TabbedSaveAction extends AbstractAction implements Iterable<TextF
     /**
      * {@inheritDoc}
      */
+    @Override
     public final void actionPerformed(ActionEvent e) {
 
         if (chooser == null) {

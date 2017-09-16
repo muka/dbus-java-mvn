@@ -23,6 +23,7 @@ class IterableNodeList implements Iterable<Node> {
         this.nl = nl;
     }
 
+    @Override
     public Iterator<Node> iterator() {
         return new NodeListIterator(nl);
     }

@@ -71,6 +71,7 @@ abstract class Container {
     /**
      * Returns this struct as a string.
      */
+    @Override
     public final String toString() {
         String s = getClass().getName() + "<";
         if (null == parameters) {
@@ -85,6 +86,7 @@ abstract class Container {
         return s.replaceAll(", $", ">");
     }
 
+    @Override
     public final boolean equals(Object other) {
         if (other instanceof Container) {
             Container that = (Container) other;

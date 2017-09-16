@@ -32,6 +32,7 @@ final class StringStreamFactory extends PrintStreamFactory {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void init(String file, String path) {
 
     }
@@ -40,6 +41,7 @@ final class StringStreamFactory extends PrintStreamFactory {
      * {@inheritDoc}
      */
     @SuppressWarnings("unused")
+    @Override
     public PrintStream createPrintStream(final String file) throws IOException {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         streamMap.put(file, stream);

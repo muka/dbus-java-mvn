@@ -97,6 +97,7 @@ public abstract class AbstractConnection {
             setName("DBusConnection");
         }
 
+        @Override
         public void run() {
             try {
                 Message m = null;
@@ -160,14 +161,17 @@ public abstract class AbstractConnection {
             this.objectpath = objectpath;
         }
 
+        @Override
         public boolean isRemote() {
             return false;
         }
 
+        @Override
         public void Ping() {
             return;
         }
 
+        @Override
         public String Introspect() {
             String intro = objectTree.Introspect(objectpath);
             if (null == intro) {
@@ -193,6 +197,7 @@ public abstract class AbstractConnection {
             _run = false;
         }
 
+        @Override
         public void run() {
             while (_run) {
                 Runnable r = null;
@@ -220,6 +225,7 @@ public abstract class AbstractConnection {
             setName("Sender");
         }
 
+        @Override
         public void run() {
             Message m = null;
 
@@ -714,6 +720,7 @@ public abstract class AbstractConnection {
         }
     }
 
+    @Override
     public void finalize() {
         disconnect();
     }
@@ -895,6 +902,7 @@ public abstract class AbstractConnection {
         addRunnable(new Runnable() {
             private boolean run = false;
 
+            @Override
             public synchronized void run() {
                 if (run) {
                     return;
@@ -1011,6 +1019,7 @@ public abstract class AbstractConnection {
             addRunnable(new Runnable() {
                 private boolean run = false;
 
+                @Override
                 public synchronized void run() {
                     if (run) {
                         return;
@@ -1071,6 +1080,7 @@ public abstract class AbstractConnection {
                 addRunnable(new Runnable() {
                     private boolean run = false;
 
+                    @Override
                     public synchronized void run() {
                         if (run) {
                             return;
@@ -1142,6 +1152,7 @@ public abstract class AbstractConnection {
                 addRunnable(new Runnable() {
                     private boolean run = false;
 
+                    @Override
                     public synchronized void run() {
                         if (run) {
                             return;

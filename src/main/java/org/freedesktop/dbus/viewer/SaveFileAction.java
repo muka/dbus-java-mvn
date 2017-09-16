@@ -30,6 +30,7 @@ class SaveFileAction extends TabbedSaveAction implements ChangeListener {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean hasNext() {
             return !iterated;
         }
@@ -37,6 +38,7 @@ class SaveFileAction extends TabbedSaveAction implements ChangeListener {
         /**
          * {@inheritDoc}
          */
+        @Override
         public TextFile next() {
             if (iterated) {
                 throw new NoSuchElementException(t("Already iterated"));
@@ -48,6 +50,7 @@ class SaveFileAction extends TabbedSaveAction implements ChangeListener {
         /**
          * {@inheritDoc}
          */
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -65,6 +68,7 @@ class SaveFileAction extends TabbedSaveAction implements ChangeListener {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void stateChanged(ChangeEvent e) {
         enableAndSetName();
     }
@@ -82,6 +86,7 @@ class SaveFileAction extends TabbedSaveAction implements ChangeListener {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Iterator<TextFile> iterator() {
         return new SelectedTabIterator();
     }

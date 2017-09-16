@@ -24,18 +24,22 @@ public class StrongReference<T> extends WeakReference<T> {
         this.referant = referant;
     }
 
+    @Override
     public void clear() {
         referant = null;
     }
 
+    @Override
     public boolean enqueue() {
         return false;
     }
 
+    @Override
     public T get() {
         return referant;
     }
 
+    @Override
     public boolean isEnqueued() {
         return false;
     }

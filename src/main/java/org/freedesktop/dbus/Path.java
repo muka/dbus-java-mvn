@@ -22,18 +22,22 @@ public class Path implements Comparable<Path> {
         return path;
     }
 
+    @Override
     public String toString() {
         return path;
     }
 
+    @Override
     public boolean equals(Object other) {
         return (other instanceof Path) && path.equals(((Path) other).path);
     }
 
+    @Override
     public int hashCode() {
         return path.hashCode();
     }
 
+    @Override
     public int compareTo(Path that) {
         return path.compareTo(that.path);
     }

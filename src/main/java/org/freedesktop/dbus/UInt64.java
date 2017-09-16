@@ -135,6 +135,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a byte.
      */
+    @Override
     public byte byteValue() {
         return value.byteValue();
     }
@@ -142,6 +143,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a double.
      */
+    @Override
     public double doubleValue() {
         return value.doubleValue();
     }
@@ -149,6 +151,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a float.
      */
+    @Override
     public float floatValue() {
         return value.floatValue();
     }
@@ -156,6 +159,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a int.
      */
+    @Override
     public int intValue() {
         return value.intValue();
     }
@@ -163,6 +167,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a long.
      */
+    @Override
     public long longValue() {
         return value.longValue();
     }
@@ -170,6 +175,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a short.
      */
+    @Override
     public short shortValue() {
         return value.shortValue();
     }
@@ -177,10 +183,12 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * Test two UInt64s for equality.
      */
+    @Override
     public boolean equals(Object o) {
         return o instanceof UInt64 && this.value.equals(((UInt64) o).value);
     }
 
+    @Override
     public int hashCode() {
         return value.hashCode();
     }
@@ -190,6 +198,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
      *
      * @return 0 if equal, -ve or +ve if they are different.
      */
+    @Override
     public int compareTo(UInt64 other) {
         return this.value.compareTo(other.value);
     }
@@ -197,6 +206,7 @@ public class UInt64 extends Number implements Comparable<UInt64> {
     /**
      * The value of this as a string.
      */
+    @Override
     public String toString() {
         return value.toString();
     }

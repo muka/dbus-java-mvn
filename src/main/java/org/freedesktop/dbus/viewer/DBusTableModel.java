@@ -35,6 +35,7 @@ class DBusTableModel extends AbstractTableModel {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getRowCount() {
         return entries.size();
     }
@@ -51,6 +52,7 @@ class DBusTableModel extends AbstractTableModel {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getColumnCount() {
         return columns.length;
     }
@@ -97,6 +99,7 @@ class DBusTableModel extends AbstractTableModel {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         DBusEntry entry = getEntry(rowIndex);
         String columnName = getColumnName(columnIndex);

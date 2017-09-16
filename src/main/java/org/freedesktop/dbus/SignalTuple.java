@@ -24,6 +24,7 @@ class SignalTuple {
         this.source = source;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof SignalTuple)) {
             return false;
@@ -56,6 +57,7 @@ class SignalTuple {
         return true;
     }
 
+    @Override
     public int hashCode() {
         return (null == type ? 0 : type.hashCode())
                 + (null == name ? 0 : name.hashCode())
@@ -63,6 +65,7 @@ class SignalTuple {
                 + (null == object ? 0 : object.hashCode());
     }
 
+    @Override
     public String toString() {
         return "SignalTuple(" + type + "," + name + "," + object + "," + source + ")";
     }

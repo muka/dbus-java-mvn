@@ -49,10 +49,12 @@ import org.freedesktop.DBus.Properties;
 
 class testnewclass implements TestNewInterface {
 
+    @Override
     public boolean isRemote() {
         return false;
     }
 
+    @Override
     public String getName() {
         return toString();
     }
@@ -66,10 +68,12 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         this.conn = conn;
     }
 
+    @Override
     public String Introspect() {
         return "Not XML";
     }
 
+    @Override
     public int[][] teststructstruct(TestStruct3 in) {
         List<List<Integer>> lli = in.b;
         int[][] out = new int[lli.size()][];
@@ -82,6 +86,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return out;
     }
 
+    @Override
     public float testfloat(float[] f) {
         if (f.length < 4
                 || f[0] != 17.093f
@@ -93,12 +98,14 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return f[0];
     }
 
+    @Override
     public void newpathtest(Path p) {
         if (!p.toString().equals("/new/path/test")) {
             test.fail("new path test got wrong path");
         }
     }
 
+    @Override
     public void waitawhile() {
         System.out.println("Sleeping.");
         try {
@@ -108,6 +115,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         System.out.println("Done sleeping.");
     }
 
+    @Override
     public <A> TestTuple<String, List<Integer>, Boolean> show(A in) {
         System.out.println("Showing Stuff: " + in.getClass() + "(" + in + ")");
         if (!(in instanceof Integer) || ((Integer) in).intValue() != 234) {
@@ -120,6 +128,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public <T> T dostuff(TestStruct foo) {
         System.out.println("Doing Stuff " + foo);
         System.out.println(" -- (" + foo.a.getClass() + ", " + foo.b.getClass() + ", " + foo.c.getClass() + ")");
@@ -139,6 +148,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
     /**
      * Local classes MUST implement this to return false
      */
+    @Override
     public boolean isRemote() {
         return false;
     }
@@ -146,6 +156,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
     /**
      * The method we are exporting to the Bus.
      */
+    @Override
     public List<Integer> sampleArray(List<String> ss, Integer[] is, long[] ls) {
         System.out.println("Got an array:");
         for (String s : ss) {
@@ -190,19 +201,23 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return v;
     }
 
+    @Override
     public String getName() {
         return "This Is A UTF-8 Name: س !!";
     }
 
+    @Override
     public String getNameAndThrow() throws TestException {
         throw new TestException("test");
     }
 
+    @Override
     public boolean check() {
         System.out.println("Being checked");
         return false;
     }
 
+    @Override
     public <T> int frobnicate(List<Long> n, Map<String, Map<UInt16, Short>> m, T v) {
         if (null == n) {
             test.fail("List was null");
@@ -249,6 +264,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return -5;
     }
 
+    @Override
     public DBusInterface getThis(DBusInterface t) {
         if (!t.equals(this)) {
             test.fail("Didn't get this properly");
@@ -256,10 +272,12 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return this;
     }
 
+    @Override
     public void throwme() throws TestException {
         throw new TestException("test");
     }
 
+    @Override
     public TestSerializable<String> testSerializable(byte b, TestSerializable<String> s, int i) {
         System.out.println("Recieving TestSerializable: " + s);
         if (b != 12
@@ -275,6 +293,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return s;
     }
 
+    @Override
     public String recursionTest() {
         try {
             TestRemoteInterface tri = conn.getRemoteObject("foo.bar.Test", "/Test", TestRemoteInterface.class);
@@ -285,14 +304,17 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         }
     }
 
+    @Override
     public int overload(String s) {
         return 1;
     }
 
+    @Override
     public int overload(byte b) {
         return 2;
     }
 
+    @Override
     public int overload() {
         DBusCallInfo info = DBusConnection.getCallInfo();
         if ("org.freedesktop.dbus.test.AlternateTestInterface".equals(info.getInterface())) {
@@ -304,10 +326,12 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         }
     }
 
+    @Override
     public List<List<Integer>> checklist(List<List<Integer>> lli) {
         return lli;
     }
 
+    @Override
     public TestNewInterface getNew() {
         testnewclass n = new testnewclass();
         try {
@@ -318,6 +342,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         return n;
     }
 
+    @Override
     public void sig(Type[] s) {
         if (s.length != 2
                 || !s[0].equals(Byte.class)
@@ -331,6 +356,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public void complexv(Variant<? extends Object> v) {
         if (!"a{ss}".equals(v.getSig())
                 || !(v.getValue() instanceof Map)
@@ -340,6 +366,7 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
         }
     }
 
+    @Override
     public void reg13291(byte[] as, byte[] bs) {
         if (as.length != bs.length) {
             test.fail("didn't receive identical byte arrays");
@@ -352,30 +379,37 @@ class testclass implements TestRemoteInterface, TestRemoteInterface2, TestSignal
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public <A> A Get(String interface_name, String property_name) {
         return (A) new Path("/nonexistant/path");
     }
 
+    @Override
     public <A> void Set(String interface_name, String property_name, A value) {
     }
 
+    @Override
     public Map<String, Variant> GetAll(String interface_name) {
         return new HashMap<String, Variant>();
     }
 
+    @Override
     public Path pathrv(Path a) {
         return a;
     }
 
+    @Override
     public List<Path> pathlistrv(List<Path> a) {
         return a;
     }
 
+    @Override
     public Map<Path, Path> pathmaprv(Map<Path, Path> a) {
         return a;
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public Map<String, Variant> svm() {
         HashMap<String, Variant> properties = new HashMap<String, Variant>();
         HashMap<String, Variant<String>> parameters = new HashMap<String, Variant<String>>();
@@ -396,6 +430,7 @@ class renamedsignalhandler implements DBusSigHandler<TestSignalInterface2.TestRe
     /**
      * Handling a signal
      */
+    @Override
     public void handle(TestSignalInterface2.TestRenamedSignal t) {
         if (false == test.done5) {
             test.done5 = true;
@@ -418,6 +453,7 @@ class emptysignalhandler implements DBusSigHandler<TestSignalInterface.EmptySign
     /**
      * Handling a signal
      */
+    @Override
     public void handle(TestSignalInterface.EmptySignal t) {
         if (false == test.done7) {
             test.done7 = true;
@@ -444,6 +480,7 @@ class disconnecthandler implements DBusSigHandler<DBus.Local.Disconnected> {
     /**
      * Handling a signal
      */
+    @Override
     public void handle(DBus.Local.Disconnected t) {
         if (false == test.done6) {
             test.done6 = true;
@@ -466,6 +503,7 @@ class pathsignalhandler implements DBusSigHandler<TestSignalInterface.TestPathSi
     /**
      * Handling a signal
      */
+    @Override
     public void handle(TestSignalInterface.TestPathSignal t) {
         System.out.println("Path sighandler: " + t);
     }
@@ -479,6 +517,7 @@ class signalhandler implements DBusSigHandler<TestSignalInterface.TestSignal> {
     /**
      * Handling a signal
      */
+    @Override
     public void handle(TestSignalInterface.TestSignal t) {
         if (false == test.done1) {
             test.done1 = true;
@@ -501,6 +540,7 @@ class arraysignalhandler implements DBusSigHandler<TestSignalInterface.TestArray
     /**
      * Handling a signal
      */
+    @Override
     public void handle(TestSignalInterface.TestArraySignal t) {
         try {
             if (false == test.done2) {
@@ -551,6 +591,7 @@ class arraysignalhandler implements DBusSigHandler<TestSignalInterface.TestArray
  */
 class objectsignalhandler implements DBusSigHandler<TestSignalInterface.TestObjectSignal> {
 
+    @Override
     public void handle(TestSignalInterface.TestObjectSignal s) {
         if (false == test.done3) {
             test.done3 = true;
@@ -569,6 +610,7 @@ class badarraysignalhandler<T extends DBusSignal> implements DBusSigHandler<T> {
     /**
      * Handling a signal
      */
+    @Override
     public void handle(T s) {
         test.fail("This signal handler shouldn't be called");
     }
@@ -579,6 +621,7 @@ class badarraysignalhandler<T extends DBusSignal> implements DBusSigHandler<T> {
  */
 class callbackhandler implements CallbackHandler<String> {
 
+    @Override
     public void handle(String r) {
         System.out.println("Handling callback: " + r);
         Collator col = Collator.getInstance();
@@ -593,6 +636,7 @@ class callbackhandler implements CallbackHandler<String> {
         test.done4 = true;
     }
 
+    @Override
     public void handleError(DBusExecutionException e) {
         System.out.println("Handling error callback: " + e + " message = '" + e.getMessage() + "'");
         if (!(e instanceof TestException)) {

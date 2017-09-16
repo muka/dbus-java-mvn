@@ -125,6 +125,7 @@ public class Transport {
                 response = s;
             }
 
+            @Override
             public String toString() {
                 return "Command(" + command + ", " + mechs + ", " + data + ", " + null + ")";
             }

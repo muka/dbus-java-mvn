@@ -31,14 +31,17 @@ public class DBusListType implements ParameterizedType {
         this.v = v;
     }
 
+    @Override
     public Type[] getActualTypeArguments() {
         return new Type[]{v};
     }
 
+    @Override
     public Type getRawType() {
         return List.class;
     }
 
+    @Override
     public Type getOwnerType() {
         return null;
     }

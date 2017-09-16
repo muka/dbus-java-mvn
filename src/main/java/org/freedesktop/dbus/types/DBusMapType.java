@@ -34,14 +34,17 @@ public class DBusMapType implements ParameterizedType {
         this.v = v;
     }
 
+    @Override
     public Type[] getActualTypeArguments() {
         return new Type[]{k, v};
     }
 
+    @Override
     public Type getRawType() {
         return Map.class;
     }
 
+    @Override
     public Type getOwnerType() {
         return null;
     }

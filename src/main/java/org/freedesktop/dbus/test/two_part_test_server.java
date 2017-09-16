@@ -17,10 +17,12 @@ public class two_part_test_server implements TwoPartInterface, DBusSigHandler<Tw
 
     public class two_part_test_object implements TwoPartObject {
 
+        @Override
         public boolean isRemote() {
             return false;
         }
 
+        @Override
         public String getName() {
             System.out.println("give name");
             return toString();
@@ -32,10 +34,12 @@ public class two_part_test_server implements TwoPartInterface, DBusSigHandler<Tw
         this.conn = conn;
     }
 
+    @Override
     public boolean isRemote() {
         return false;
     }
 
+    @Override
     public TwoPartObject getNew() {
         TwoPartObject o = new two_part_test_object();
         System.out.println("export new");
@@ -47,6 +51,7 @@ public class two_part_test_server implements TwoPartInterface, DBusSigHandler<Tw
         return o;
     }
 
+    @Override
     public void handle(TwoPartInterface.TwoPartSignal s) {
         System.out.println("Got: " + s.o);
     }

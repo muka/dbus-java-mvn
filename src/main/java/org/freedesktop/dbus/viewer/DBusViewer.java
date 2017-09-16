@@ -75,6 +75,7 @@ public class DBusViewer {
 
         SwingUtilities.invokeLater(new Runnable() {
             @SuppressWarnings("synthetic-access")
+            @Override
             public void run() {
 
                 final JTabbedPane tabbedPane = new JTabbedPane();
@@ -120,6 +121,7 @@ public class DBusViewer {
         }
         Runnable loader = new Runnable() {
             @SuppressWarnings("synthetic-access")
+            @Override
             public void run() {
                 boolean users = true, owners = true;
                 for (final String key : connectionTypes.keySet()) {
@@ -132,6 +134,7 @@ public class DBusViewer {
                                 owners, conn);
 
                         SwingUtilities.invokeLater(new Runnable() {
+                            @Override
                             public void run() {
                                 int index = tabbedPane.indexOfTab(key);
                                 final JTable table = new JTable(tableModel);
@@ -155,6 +158,7 @@ public class DBusViewer {
                     } catch (final DBusException e) {
                         e.printStackTrace();
                         SwingUtilities.invokeLater(new Runnable() {
+                            @Override
                             public void run() {
                                 int index = tabbedPane.indexOfTab(key);
                                 JLabel label = (JLabel) tabbedPane
@@ -167,6 +171,7 @@ public class DBusViewer {
                     } catch (final DBusExecutionException e) {
                         e.printStackTrace();
                         SwingUtilities.invokeLater(new Runnable() {
+                            @Override
                             public void run() {
                                 int index = tabbedPane.indexOfTab(key);
                                 JLabel label = (JLabel) tabbedPane
