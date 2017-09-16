@@ -49,6 +49,7 @@ public class MessageReader {
         if (len[0] < 12) {
             try {
                 rv = in.read(buf, len[0], 12 - len[0]);
+                Debug.print(Debug.INFO, "xxxxxxxxxxxxxxxxxxxxxx readMessage GOT IN");
             } catch (SocketTimeoutException STe) {
                 return null;
             }
@@ -212,6 +213,7 @@ public class MessageReader {
         tbuf = null;
         body = null;
         header = null;
+        
         return m;
     }
 

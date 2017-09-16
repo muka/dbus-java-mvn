@@ -847,6 +847,8 @@ public class Transport {
                     uss.bind(new UnixSocketAddress(address.getParameter("abstract")));
                 } else if (null != address.getParameter("path")) {
                     uss.bind(new UnixSocketAddress(new File(address.getParameter("path"))));
+                } else {
+                    throw new RuntimeException("Cannot open socket");
                 }
                 us = uss.accept();
             } else {
@@ -859,15 +861,19 @@ public class Transport {
                 } else {
                     throw new RuntimeException("Cannot open socket");
                 }
-
-                us = UnixSocketChannel.open(addr).socket();
+                //connect
+                UnixSocketChannel chan = UnixSocketChannel.open(addr);
+                us = chan.socket();
             }
 
-            //@TODO: fix se for OS_CRED
+            //@TODO: review, Crediantials are set. Check if is required to check for OS_PEERCRED
+//            Credentials c = us.getChannel().getOption(UnixSocketOptions.SO_PEERCRED);
+            // This will fail with an AssertionError
 //            us.getChannel().setOption(UnixSocketOptions.SO_PEERCRED, us.getCredentials());
 
             in = us.getInputStream();
-            out = us.getOutputStream();
+            out = us.getOutputStream();           
+
         } else if ("tcp".equals(address.getType())) {
             types = SASL.AUTH_SHA;
             if (null != address.getParameter("listen")) {
@@ -895,8 +901,9 @@ public class Transport {
                 Debug.print(Debug.VERBOSE, "Setting timeout to " + timeout + " on Socket");
             }
             if (timeout == 1) {
-                //@TODO fix this
+                //@TODO review
 //                us.setBlocking(false);
+                us.getChannel().configureBlocking(false);
             } else {
                 us.setSoTimeout(timeout);
             }

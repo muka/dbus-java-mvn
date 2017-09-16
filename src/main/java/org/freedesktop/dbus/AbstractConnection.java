@@ -101,14 +101,17 @@ public abstract class AbstractConnection {
         public void run() {
             try {
                 Message m = null;
+                
                 while (_run) {
                     m = null;
-
+                    
                     // read from the wire
                     try {
+                        Thread.sleep(50);
                         // this blocks on outgoing being non-empty or a message being available.
                         m = readIncoming();
                         if (m != null) {
+                            
                             if (Debug.debug) {
                                 Debug.print(Debug.VERBOSE, "Got Incoming Message: " + m);
                             }
@@ -136,8 +139,8 @@ public abstract class AbstractConnection {
                             disconnect();
                         }
                     }
-
                 }
+                                
                 synchronized (this) {
                     notifyAll();
                 }

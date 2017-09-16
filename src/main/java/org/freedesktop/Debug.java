@@ -28,25 +28,6 @@ public class Debug {
     static Logger log = LoggerFactory.getLogger("dbus");
 
     /**
-     * This interface can be used to provide custom printing filters for certain
-     * classes.
-     */
-    public static interface FilterCommand {
-
-        /**
-         * Called to print debug messages with a custom filter.
-         *
-         * @param output The PrintStream to output to.
-         * @param level The debug level of this message.
-         * @param location The textual location of the message.
-         * @param extra Extra information such as timing details.
-         * @param message The debug message.
-         * @param lines Other lines of a multiple-line debug message.
-         */
-        public void filter(PrintStream output, int level, String location, String extra, String message, String[] lines);
-    }
-    
-    /**
      * Highest priority messages
      */
     public static final int CRIT = 1;
@@ -87,8 +68,6 @@ public class Debug {
     private static int balen = 36;
     private static int bawidth = 80;
     private static Class saveclass = null;
-    //TODO: 1.5 private static Map<Class<? extends Object>, FilterCommand> filterMap = new HashMap<Class<? extends Object>, FilterCommand>();
-    private static Map filterMap = new HashMap();
 
     /**
      * Set properties to configure debugging. Format of properties is class
@@ -442,29 +421,47 @@ public class Debug {
         Debug.bawidth = width;
     }
 
-    /**
-     * Add a filter command for a specific type. This command will be called
-     * with the output stream and the text to be sent. It should perform any
-     * changes necessary to the text and then print the result to the output
-     * stream.
-     */
-    public static void addFilterCommand(Class c, FilterCommand f) //TODO 1.5: public static void addFilterCommand(Class<? extends Object> c, FilterCommand f)
-    {
-        filterMap.put(c, f);
-    }
-
     private static void _print(Class c, int level, String loc, String extra, String message, String[] lines) {
-        //TODO 1.5: FilterCommand f = filterMap.get(c);
-        FilterCommand f = (FilterCommand) filterMap.get(c);
-        if (null == f) {
-            debugout.println("[" + loc + "] " + extra + message);
-            if (null != lines) {
+
+        String m = "[" + loc + "] " + extra + message;
+
+        if (null == lines) {
+            lines = new String[0];
+        }
+
+        switch (level) {
+            case VERBOSE:
+                log.trace(m);
                 for (String s : lines) {
-                    debugout.println(s);
+                    log.trace(s);
                 }
-            }
-        } else {
-            f.filter(debugout, level, loc, extra, message, lines);
+                break;
+            case DEBUG:
+                log.debug(m);
+                for (String s : lines) {
+                    log.debug(s);
+                }
+                break;
+            case INFO:
+                log.info(m);
+                for (String s : lines) {
+                    log.info(s);
+                }
+                break;
+            case WARN:
+                log.warn(m);
+                for (String s : lines) {
+                    log.warn(s);
+                }
+                break;
+            case ERR:
+            case CRIT:
+                log.error(m);
+                for (String s : lines) {
+                    log.error(s);
+                }
+                break;
+
         }
     }
 }
