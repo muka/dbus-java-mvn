@@ -28,6 +28,11 @@ public class Debug {
     static Logger log = LoggerFactory.getLogger("dbus");
 
     /**
+     * Set this to false to disable compilation of Debug statements
+     */
+    public static final boolean debug = false;
+    
+    /**
      * Highest priority messages
      */
     public static final int CRIT = 1;
@@ -51,10 +56,7 @@ public class Debug {
      * Verbose debug messages
      */
     public static final int VERBOSE = 6;
-    /**
-     * Set this to false to disable compilation of Debug statements
-     */
-    public static final boolean debug = false;
+
     /**
      * The current output stream (defaults to System.err)
      */
